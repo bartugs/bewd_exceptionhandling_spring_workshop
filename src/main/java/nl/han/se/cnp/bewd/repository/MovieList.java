@@ -36,7 +36,8 @@ public class MovieList {
                 return movie;
             }
         }
-       throw new MovieNotFoundException();
+       throw new MovieNotFoundException("Niet gevonden DJ Khaled");
     }
+
 
 }

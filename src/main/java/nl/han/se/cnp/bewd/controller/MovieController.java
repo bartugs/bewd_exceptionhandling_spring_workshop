@@ -4,10 +4,7 @@ import nl.han.se.cnp.bewd.domain.Movie;
 import nl.han.se.cnp.bewd.repository.MovieList;
 import nl.han.se.cnp.bewd.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/movies")
@@ -26,8 +23,13 @@ public class MovieController {
 
     @GetMapping("/")
     public Movie getMovieById(@RequestParam("id") String id) {
-
             Movie movie = movieService.getMovieById(id);
             return movie;
+    }
+
+    @GetMapping("/{id}") // Hier kan je eventueel 'title' gebruiken i.p.v. 'id'
+    public Movie getMovieById2(@PathVariable String id) {
+        Movie movie = movieService.getMovieById(id);
+        return movie;
     }
 }
